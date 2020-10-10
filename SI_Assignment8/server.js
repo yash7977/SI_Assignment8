@@ -92,6 +92,35 @@ app.get("/foods",cache(200), (req, res) => {
 
 /**
  * @swagger
+ * /company:
+ *    get:
+ *      description: Return all records from company table
+ *      produces:
+ *          - application/json
+ *      responses:
+ *          200:
+ *              description: Obejct containg arrays of company
+ */
+app.get("/company",cache(200), (req, res) => {
+  pool
+    .getConnection()
+    .then((conn) => {
+      conn.query("SELECT * FROM company").then((data) => {
+        res.header("Content-Type", "application/json");
+        res.status(200);
+        res.send(data);
+        conn.close();
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      conn.end();
+    });
+});
+
+
+/**
+ * @swagger
  * /agents:
  *    get:
  *      description: Return all records from agents table
