@@ -72,7 +72,7 @@ const pool = mariadb.createPool({
  *          200:
  *              description: Obejct containg arrays of foods
  */
-app.get("/foods",cache(200), (req, res) => {
+app.get("/foods",cache(50), (req, res) => {
   pool
     .getConnection()
     .then((conn) => {
@@ -101,7 +101,7 @@ app.get("/foods",cache(200), (req, res) => {
  *          200:
  *              description: Obejct containg arrays of company
  */
-app.get("/company",cache(200), (req, res) => {
+app.get("/company",cache(50), (req, res) => {
   pool
     .getConnection()
     .then((conn) => {
@@ -130,7 +130,7 @@ app.get("/company",cache(200), (req, res) => {
  *          200:
  *              description: Obejct containg arrays of agents
  */
-app.get("/agents",cache(200), (req, res) => {
+app.get("/agents",cache(50), (req, res) => {
   pool
     .getConnection()
     .then((conn) => {
@@ -159,7 +159,7 @@ app.get("/agents",cache(200), (req, res) => {
  *          200:
  *              description: Obejct containg arrays of student
  */
-app.get("/student",cache(200), (req, res) => {
+app.get("/student",cache(50), (req, res) => {
   pool
     .getConnection()
     .then((conn) => {
